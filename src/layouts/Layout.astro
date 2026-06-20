@@ -1,23 +1,88 @@
+---
+import "../styles/global.css";
+import { getImage } from "astro:assets";
+import heroImage from "../assets/hero.jpg";
+
+// Generate responsive optimized images for preloading to avoid dual requests and large JPEG downloads
+const hero640 = await getImage({ src: heroImage, width: 640, format: 'webp' });
+const hero991 = await getImage({ src: heroImage, width: 991, format: 'webp' });
+const hero1600 = await getImage({ src: heroImage, width: 1600, format: 'webp' });
+
+const heroSrcset = `${hero640.src} 640w, ${hero991.src} 991w, ${hero1600.src} 1600w`;
+const heroSizes = "(max-width: 640px) 640px, (max-width: 991px) 991px, 1600px";
+---
 <!doctype html>
-<html lang="en">
+<html lang="id">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- Preconnect to Google Fonts CDN -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- Preload Critical LCP Hero Image (WebP Responsive matching the Picture component) -->
+		<link rel="preload" as="image" imagesrcset={heroSrcset} imagesizes={heroSizes} fetchpriority="high" type="image/webp" />
+		
+		<!-- Load Google Fonts (Non-blocking asynchronous load) -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		</noscript>
+		
+		<!-- SEO Optimization -->
+		<title>FindFein | Premium Minimalist Industrial Cafe di Semarang</title>
+		<meta name="description" content="FindFein adalah ruang singgah industrial minimalis modern di Semarang. Tempat nongkrong, WFC (Work From Cafe), dan meeting terbaik dengan kopi berkualitas mulai dari 20K." />
+		<meta name="keywords" content="FindFein Cafe, Cafe Semarang, Cafe Industrial, Cafe Minimalis, Cafe WFC Semarang, Tempat Nongkrong Semarang, Coffee Shop Semarang" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://findfeincafe.com/" />
+		<meta property="og:title" content="FindFein | Premium Minimalist Industrial Cafe di Semarang" />
+		<meta property="og:description" content="Tempat nongkrong & WFC terbaik di Semarang dengan konsep industrial minimalis hangat." />
+		<meta property="og:image" content="/images/hero.jpg" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content="FindFein | Premium Minimalist Industrial Cafe di Semarang" />
+		<meta property="twitter:description" content="Tempat nongkrong & WFC terbaik di Semarang dengan konsep industrial minimalis hangat." />
+		<meta property="twitter:image" content="/images/hero.jpg" />
+
+		<!-- Non-blocking Phosphor Icons CSS CDN -->
+		<link rel="preload" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+		</noscript>
 	</head>
 	<body>
 		<slot />
+		
+		<!-- Smooth entry fade animation observer script -->
+		<script is:inline>
+			const observerOptions = {
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.1
+			};
+			
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+						observer.unobserve(entry.target); // Trigger once
+					}
+				});
+			}, observerOptions);
+			
+			document.addEventListener('DOMContentLoaded', () => {
+				const revealElements = document.querySelectorAll('.reveal-on-scroll');
+				revealElements.forEach(el => observer.observe(el));
+			});
+		</script>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+

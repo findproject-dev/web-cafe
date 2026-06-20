@@ -1,11 +1,51 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Uvp from '../components/Uvp.astro';
+import Menu from '../components/Menu.astro';
+import Ambience from '../components/Ambience.astro';
+import Location from '../components/Location.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <!-- Sticky Header Navigation -->
+  <Navbar />
+
+  <!-- Main Content Structure -->
+  <main>
+    <!-- Hero Section (First Impact) -->
+    <Hero />
+    
+    <!-- Unique Value Proposition & Brand Details -->
+    <div class="reveal-on-scroll">
+      <Uvp />
+    </div>
+    
+    <!-- Interactive Curated Menu Catalog -->
+    <div class="reveal-on-scroll">
+      <Menu />
+    </div>
+    
+    <!-- Visual Storytelling Gallery & Experiences -->
+    <div class="reveal-on-scroll">
+      <Ambience />
+    </div>
+    
+    <!-- Location Details & Operational Hours -->
+    <div class="reveal-on-scroll">
+      <Location />
+    </div>
+    
+    <!-- Accordion FAQ Details -->
+    <div class="reveal-on-scroll">
+      <Faq />
+    </div>
+  </main>
+
+  <!-- Final CTA Footer Banner & Links -->
+  <Footer />
 </Layout>
+

@@ -1,0 +1,155 @@
+---
+/* UVP Component */
+---
+<section id="about" class="uvp-section section-spacing">
+  <div class="container">
+    <div class="uvp-grid">
+      
+      <!-- Left side: Slogan & Big Statement -->
+      <div class="uvp-statement">
+        <span class="mono-eyebrow">THE BRAND POSITIONING</span>
+        <h2 class="uvp-slogan">"Find Your Moment, <br />FindFein."</h2>
+      </div>
+      
+      <!-- Right side: Core UVP Text & Metrics -->
+      <div class="uvp-details">
+        <p class="uvp-paragraph">
+          FindFein adalah ruang singgah modern untuk anak muda yang mencari ketenangan di tengah hiruk pikuk kota. Dengan konsep industrial minimalis yang hangat, setiap sudutnya dirancang untuk bekerja, berbincang, atau sekadar menikmati waktu sendiri. Coffee berkualitas, suasana estetik, dan tempat yang terasa seperti <strong class="highlight">“ruang kedua”</strong> setelah rumah.
+        </p>
+        
+        <div class="metrics-row">
+          <div class="metric-item">
+            <span class="metric-value">2025</span>
+            <span class="metric-label">Tahun Berdiri</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value">Semarang</span>
+            <span class="metric-label">Satu-satunya Lokasi</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value">20K<span class="plus">+</span></span>
+            <span class="metric-label">Harga Mulai Dari</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .uvp-section {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    background-color: var(--bg-surface);
+  }
+  
+  .uvp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: flex-start;
+  }
+  
+  .mono-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .uvp-slogan {
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+  }
+  
+  .uvp-paragraph {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 3.5rem;
+  }
+  
+  .uvp-paragraph .highlight {
+    color: var(--accent-gold);
+    font-weight: 600;
+  }
+  
+  /* Flat Metrics Row (no cards, just borders and whitespace) */
+  .metrics-row {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 2rem 0;
+  }
+  
+  .metric-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .metric-value {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+  }
+  
+  .metric-value .plus {
+    color: var(--accent-gold);
+  }
+  
+  .metric-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .metric-divider {
+    width: 1px;
+    height: 40px;
+    background-color: var(--border-color);
+    margin: 0 2rem;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 991px) {
+    .uvp-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .uvp-paragraph {
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .metrics-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+    }
+    
+    .metric-divider {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,579 @@
+---
+/* Menu Component */
+
+const topPicks = [
+  {
+    name: "Coffee Butterscotch Sea Salt",
+    price: "28K",
+    desc: "Signature cold brew with rich butterscotch cream and a sprinkle of sea salt."
+  },
+  {
+    name: "Wagyu Beef Burger",
+    price: "55K",
+    desc: "Premium Wagyu beef patty with cheddar, caramelized onions, and house sauce."
+  },
+  {
+    name: "Truffle Parmesan Fries",
+    price: "28K",
+    desc: "Crispy skin-on fries tossed in white truffle oil and fresh parmesan."
+  },
+  {
+    name: "Iced Matcha Espresso",
+    price: "30K",
+    desc: "Uji matcha layered with fresh milk and a double shot of espresso."
+  },
+  {
+    name: "Creamy Carbonara Pasta",
+    price: "45K",
+    desc: "Creamy alfredo sauce pasta with crispy smoked beef and parmesan."
+  },
+  {
+    name: "Rose Latte",
+    price: "28K",
+    desc: "Floral-infused espresso latte with a soft pink rose aroma."
+  }
+];
+
+const foods = [
+  { name: "Wagyu Beef Burger", price: "55K", desc: "Wagyu beef patty, cheddar, caramelized onion, brioche bun." },
+  { name: "Creamy Carbonara Pasta", price: "45K", desc: "Fettuccine in creamy egg & parmesan sauce, crispy beef bacon." },
+  { name: "Classic Aglio Olio", price: "38K", desc: "Spaghetti tossed in olive oil, garlic, chili flakes, and prawns." },
+  { name: "FindFein Club Sandwich", price: "40K", desc: "Triple decker sandwich with grilled chicken, egg, bacon, lettuce." },
+  { name: "Smashed Avocado Toast", price: "35K", desc: "Sourdough toast topped with seasoned avocado mash, cherry tomato." },
+  { name: "Crispy Chicken Katsu Curry", price: "48K", desc: "Crispy katsu chicken served with Japanese curry and steamed rice." },
+  { name: "Nasi Goreng Kampung Premium", price: "38K", desc: "Traditional fried rice with chicken skewers, egg, and crackers." },
+  { name: "Grilled Chicken Breast", price: "50K", desc: "Sous-vide chicken breast with mashed potato and mushroom sauce." },
+  { name: "Fish & Chips", price: "42K", desc: "Battered dory fish fillet served with fries and tartar sauce." },
+  { name: "Beef Sirloin Bowl", price: "52K", desc: "Sliced sirloin beef, soft boiled egg, warm rice, signature glaze." }
+];
+
+const coffeeDrinks = [
+  { name: "Espresso", price: "20K", desc: "Pure concentrate extract of premium house blend beans." },
+  { name: "Americano", price: "22K", desc: "Double shot espresso with hot or iced filtered water." },
+  { name: "Cafe Latte", price: "26K", desc: "Espresso with silky microfoamed milk." },
+  { name: "Cappuccino", price: "26K", desc: "Balanced espresso, steamed milk, and thick milk foam." },
+  { name: "Coffee Butterscotch Sea Salt", price: "28K", desc: "Our signature layered butterscotch sea salt creamy latte." },
+  { name: "Caramel Macchiato", price: "30K", desc: "Latte marked with rich vanilla and sweet caramel drizzle." },
+  { name: "Iced White / Piccolo", price: "26K", desc: "Rich and bold ristretto coffee with velvety milk." },
+  { name: "Hazelnut Latte", price: "28K", desc: "Classic latte infused with premium toasted hazelnut syrup." },
+  { name: "Vanilla Latte", price: "28K", desc: "Espresso latte with aromatic Madagascar vanilla extract." },
+  { name: "Mocca Latte", price: "28K", desc: "Espresso combined with dark cocoa powder and steamed milk." },
+  { name: "Affogato", price: "24K", desc: "A double shot of espresso poured over vanilla bean gelato." },
+  { name: "Flat White", price: "26K", desc: "Bold espresso base with thin microfoam layer." },
+  { name: "Espresso Matcha Fusion", price: "30K", desc: "Layered drink with sweet matcha, milk, and espresso shot." },
+  { name: "Cold Brew Tonic", price: "26K", desc: "Light and refreshing slow cold brew topped with tonic water." },
+  { name: "Signature Creamy Iced Coffee", price: "25K", desc: "Sweet, creamy milk espresso engineered for hot Semarang days." }
+];
+
+const nonCoffeeDrinks = [
+  { name: "Premium Matcha Latte", price: "28K", desc: "Authentic stone-ground Uji matcha whisked with fresh milk." },
+  { name: "Charcoal Latte", price: "28K", desc: "Activated charcoal powder sweetened with vanilla and milk." },
+  { name: "Red Velvet Latte", price: "28K", desc: "Decadent red velvet cocoa notes blended with milk." },
+  { name: "Sweet Peach Tea", price: "22K", desc: "Black tea infused with peach syrup and real peach slices." },
+  { name: "Lychee Tea Rose", price: "24K", desc: "Sweet lychee black tea with a delicate rose floral note." },
+  { name: "Lemon Ginger Tea", price: "22K", desc: "Warm soothing tea with crushed ginger roots and lemon juice." },
+  { name: "Premium Artisan Chocolate", price: "28K", desc: "Rich dark cocoa blend with chocolate sauce and milk." },
+  { name: "Matcha Mango Mocktail", price: "30K", desc: "Layered mocktail with mango puree, soda, and matcha float." },
+  { name: "Blue Ocean Fizz Mocktail", price: "30K", desc: "Blue curacao, lemon juice, mint leaves, and carbonated water." },
+  { name: "Berry Hibiscus Lemonade", price: "28K", desc: "Tart hibiscus tea shaken with sweet berries and lemonade." },
+  { name: "Classic Virgin Mojito", price: "26K", desc: "Muddled lime, mint leaves, simple syrup, topped with soda." },
+  { name: "Kiwi Mint Cooler", price: "28K", desc: "Fresh kiwi puree, mint leaves, and refreshing lime soda." },
+  { name: "Taro Milk Tea", price: "24K", desc: "Creamy, sweet purple taro root powder whisked with milk." },
+  { name: "Matcha Earl Grey Latte", price: "28K", desc: "An aromatic combination of early grey tea, matcha, and milk." },
+  { name: "Mineral Water", price: "15K", desc: "Premium bottled water, chilled." }
+];
+
+const snacks = [
+  { name: "Truffle Parmesan Fries", price: "28K", desc: "Crispy skin-on fries tossed in white truffle oil and fresh parmesan." },
+  { name: "Crispy Onion Rings", price: "22K", desc: "Golden crispy batter-fried onion rings served with sweet chili dip." },
+  { name: "Nachos Beef Cheese", price: "32K", desc: "Tortilla chips loaded with seasoned ground beef and melted cheese sauce." },
+  { name: "Churros Caramel Sauce", price: "25K", desc: "Traditional fried dough pastry dusted with cinnamon sugar and caramel dip." },
+  { name: "Honey Glazed Wings", price: "30K", desc: "Juicy chicken wings coated in sweet honey glaze and sesame seeds." },
+  { name: "Bitterballen Croquette", price: "28K", desc: "Dutch deep-fried beef-ragout balls, crispy outside and creamy inside." },
+  { name: "Crispy Tofu Salt & Pepper", price: "20K", desc: "Crispy fried tofu seasoned with spiced salt, pepper, and spring onions." }
+];
+
+const desserts = [
+  { name: "Premium Matcha Tiramisu", price: "35K", desc: "Decadent layers of creamy mascarpone and authentic Uji matcha." },
+  { name: "Classic Tiramisu", price: "32K", desc: "Italian dessert with espresso-soaked ladyfingers and mascarpone." },
+  { name: "Lotus Biscoff Croffle", price: "30K", desc: "Fresh baked flaky croffle topped with lotus cream and biscoff crumbs." },
+  { name: "Vanilla Bean Panna Cotta", price: "28K", desc: "Silky vanilla panna cotta served with sweet raspberry coulis." },
+  { name: "Dark Chocolate Lava Cake", price: "32K", desc: "Warm chocolate cake with a molten lava center, served with gelato." }
+];
+---
+<section id="menu" class="menu-section section-spacing">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="menu-header">
+      <span class="mono-eyebrow">CURATED FLAVORS</span>
+      <h2 class="section-title">Explore Our <span class="accent">Menu</span></h2>
+      <p class="section-subtitle">Crafted with high-quality ingredients to fuel your focus and conversations.</p>
+    </div>
+    
+    <!-- Navigation Tabs -->
+    <div class="menu-tabs-wrapper">
+      <div class="menu-tabs">
+        <button class="tab-btn active" data-tab="top-picks">Top Picks</button>
+        <button class="tab-btn" data-tab="coffee">Coffee</button>
+        <button class="tab-btn" data-tab="non-coffee">Non-Coffee</button>
+        <button class="tab-btn" data-tab="food">Food</button>
+        <button class="tab-btn" data-tab="snack">Snack</button>
+        <button class="tab-btn" data-tab="dessert">Dessert</button>
+      </div>
+    </div>
+    
+    <!-- Tab Panels Container -->
+    <div class="tab-panels">
+      
+      <!-- Panel 1: Top Picks -->
+      <div class="tab-panel active" id="top-picks">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {topPicks.slice(0, 2).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {topPicks.slice(2, 4).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {topPicks.slice(4).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 2: Coffee -->
+      <div class="tab-panel" id="coffee">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {coffeeDrinks.slice(0, 5).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {coffeeDrinks.slice(5, 10).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {coffeeDrinks.slice(10).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 3: Non-Coffee -->
+      <div class="tab-panel" id="non-coffee">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {nonCoffeeDrinks.slice(0, 5).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {nonCoffeeDrinks.slice(5, 10).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {nonCoffeeDrinks.slice(10).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 4: Food -->
+      <div class="tab-panel" id="food">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {foods.slice(0, 4).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {foods.slice(4, 7).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {foods.slice(7).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 5: Snack -->
+      <div class="tab-panel" id="snack">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {snacks.slice(0, 3).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {snacks.slice(3, 5).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {snacks.slice(5).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 6: Dessert -->
+      <div class="tab-panel" id="dessert">
+        <div class="list-menu-container">
+          <div class="menu-column">
+            {desserts.slice(0, 2).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {desserts.slice(2, 4).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="menu-column">
+            {desserts.slice(4).map(item => (
+              <div class="list-item">
+                <div class="list-item-header">
+                  <span class="list-item-name">{item.name}</span>
+                  <span class="list-item-line"></span>
+                  <span class="list-item-price">{item.price}</span>
+                </div>
+                <p class="list-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-section {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .menu-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .section-title .accent {
+    color: var(--accent-gold);
+  }
+  
+  .section-subtitle {
+    max-width: 50ch;
+    margin: 0 auto;
+    color: var(--text-secondary);
+  }
+  
+  /* Tabs System */
+  .menu-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  
+  .menu-tabs {
+    display: flex;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    padding: 0.4rem;
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+  
+  .menu-tabs::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+  
+  .tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.6rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition-fast);
+  }
+  
+  .tab-btn:hover {
+    color: var(--text-primary);
+  }
+  
+  .tab-btn.active {
+    background-color: var(--border-color);
+    color: var(--accent-gold);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Tab Panels */
+  .tab-panels {
+    position: relative;
+    min-height: 400px;
+  }
+  
+  .tab-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .tab-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Typographic Traditional Cafe List Menu */
+  .list-menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  
+  .menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .list-item-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .list-item-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .list-item-line {
+    flex-grow: 1;
+    height: 1px;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  
+  .list-item-price {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+  }
+  
+  .list-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 991px) {
+    .list-menu-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .menu-tabs {
+      gap: 0.2rem;
+      padding: 0.3rem;
+    }
+    
+    .tab-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      // Add active to current tab
+      tab.classList.add('active');
+      
+      const targetTab = tab.getAttribute('data-tab');
+      
+      // Hide all panels
+      panels.forEach(panel => {
+        panel.classList.remove('active');
+        // Wait for display:none before removal
+        (panel as HTMLElement).style.display = 'none';
+      });
+      
+      // Show target panel
+      const targetPanel = document.getElementById(targetTab!);
+      if (targetPanel) {
+        targetPanel.style.display = 'block';
+        // Force reflow
+        targetPanel.offsetHeight;
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+</script>

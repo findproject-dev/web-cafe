@@ -1,0 +1,221 @@
+---
+/* Location & Operational Hours Component */
+---
+<section id="location" class="location-section section-spacing">
+  <div class="container">
+    <div class="location-grid">
+      
+      <!-- Left side: Interactive Map (Double Bezel Framed) -->
+      <div class="location-map">
+        <div class="double-bezel-outer">
+          <div class="double-bezel-inner map-inner">
+            <iframe 
+              src="https://maps.google.com/maps?q=Jl.%20Tambora%20No.%2025,%20Candisari,%20Semarang&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              class="map-iframe" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="FindFein Cafe Google Map"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Info & Hours -->
+      <div class="location-info">
+        <span class="mono-eyebrow">THE GATEWAY</span>
+        <h2 class="section-title">Kunjungi <span class="accent">FindFein</span></h2>
+        <p class="location-subtitle">Terletak di perbukitan sejuk Semarang, tempat sempurna untuk melarikan diri sejenak.</p>
+        
+        <!-- Details grid -->
+        <div class="details-list">
+          
+          <div class="detail-block">
+            <div class="detail-icon">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+            </div>
+            <div class="detail-text">
+              <h4>Alamat</h4>
+              <p>Jl. Tambora No. 25, Candisari, Semarang, Jawa Tengah 50252</p>
+            </div>
+          </div>
+          
+          <div class="detail-block">
+            <div class="detail-icon">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+            </div>
+            <div class="detail-text">
+              <h4>Jam Operasional</h4>
+              <p class="hours-highlight">Setiap Hari · 06:00 - 22:00 WIB</p>
+              <span class="hours-tag">Available for WFC & Morning Coffee</span>
+            </div>
+          </div>
+          
+        </div>
+        
+        <a href="https://maps.google.com/?q=Jl.+Tambora+No.+25,+Candisari,+Semarang" target="_blank" rel="noopener noreferrer" class="btn btn-primary direction-btn">
+          <span>Get Directions</span>
+          <i class="ph ph-navigation-arrow" aria-hidden="true"></i>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .location-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  
+  .location-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 45ch;
+  }
+  
+  .details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .detail-block {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    align-items: flex-start;
+    transition: var(--transition-smooth);
+  }
+  
+  .detail-block:hover {
+    border-color: var(--border-focus);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .detail-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .detail-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .detail-text p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  .detail-text .hours-highlight {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  .hours-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.35rem;
+  }
+  
+  .direction-btn {
+    border-radius: var(--radius-pill);
+    padding: 0.8rem 1.8rem;
+  }
+  
+  .direction-btn i {
+    transition: var(--transition-fast);
+  }
+  
+  .direction-btn:hover i {
+    transform: translate(2px, -2px);
+  }
+  
+  /* Map layout with double bezel */
+  .location-map {
+    width: 100%;
+  }
+  
+  .double-bezel-outer {
+    background-color: var(--border-color);
+    border-radius: 2rem;
+    padding: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 16/11;
+  }
+  
+  .map-inner {
+    border-radius: calc(2rem - 6px);
+    width: 100%;
+    height: 100%;
+  }
+  
+  .map-iframe {
+    width: 100%;
+    height: 100%;
+    filter: invert(90%) hue-rotate(180deg) grayscale(100%) contrast(95%); /* Sleek dark-mode maps adjustment */
+    opacity: 0.85;
+    transition: var(--transition-smooth);
+  }
+  
+  .double-bezel-outer:hover .map-iframe {
+    opacity: 1;
+    filter: invert(90%) hue-rotate(180deg) grayscale(80%) contrast(100%);
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 991px) {
+    .location-grid {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    
+    .double-bezel-outer {
+      aspect-ratio: 16/10;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .double-bezel-outer {
+      border-radius: 1.5rem;
+      padding: 6px;
+    }
+    
+    .map-inner {
+      border-radius: calc(1.5rem - 4px);
+    }
+  }
+</style>

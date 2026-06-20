@@ -1,0 +1,208 @@
+---
+/* FAQ Accordion Component */
+
+const faqs = [
+  {
+    q: "Apakah bisa melakukan reservasi meja?",
+    a: "Ya, kami melayani reservasi meja gratis untuk weekdays (Senin - Jumat). Untuk hari Sabtu & Minggu, reservasi ditiadakan karena kebijakan first-come, first-served untuk mengakomodasi tingginya volume kunjungan."
+  },
+  {
+    q: "Apakah bisa menyewa seluruh area untuk acara ulang tahun?",
+    a: "Ya, area FindFein tersedia untuk disewa (private booking) untuk pesta ulang tahun, gathering, atau private party lainnya di luar jam sibuk. Silakan hubungi admin WhatsApp kami minimal 7 hari sebelum acara."
+  },
+  {
+    q: "Apakah tersedia ruang meeting privat?",
+    a: "Kami memiliki satu area semi-private meeting dengan colokan terdedikasi dan pencahayaan yang nyaman untuk meeting kecil (kapasitas hingga 6 orang). Tidak ada biaya tambahan, namun sangat disarankan memesan tempat terlebih dahulu."
+  },
+  {
+    q: "Apakah tersedia akses WiFi yang cepat untuk WFC?",
+    a: "Tentu saja. Kami mengerti kebutuhan bekerja Anda. Kami menyediakan koneksi WiFi high-speed serat optik (up to 100 Mbps) dengan access point yang didistribusikan merata di area indoor maupun outdoor."
+  },
+  {
+    q: "Apakah ada smoking area (ruang merokok)?",
+    a: "Kami menyediakan area outdoor yang luas dan nyaman sebagai smoking area. Area indoor ber-AC kami adalah area bebas asap rokok (non-smoking area) demi kenyamanan bersama."
+  },
+  {
+    q: "Bagaimana cara melakukan booking tempat untuk photoshoot?",
+    a: "Untuk photoshoot komersil (katalog brand, pre-wedding, produk), Anda dapat menghubungi admin WhatsApp untuk menjadwalkan sesi khusus di pagi hari sebelum jam operasional cafe (06:00 - 08:00 WIB) agar tidak mengganggu pelanggan lain."
+  },
+  {
+    q: "Metode pembayaran apa saja yang diterima?",
+    a: "Kami menerima metode pembayaran non-tunai (Cashless First): QRIS (semua e-wallet & mobile banking), kartu debit/kredit (Visa & Mastercard), serta pembayaran tunai."
+  }
+];
+---
+<section id="faq" class="faq-section section-spacing">
+  <div class="container">
+    <div class="faq-grid">
+      
+      <!-- Left side: Title -->
+      <div class="faq-header">
+        <span class="mono-eyebrow">COMMON QUESTIONS</span>
+        <h2 class="section-title">Frequently Asked <span class="accent">Questions</span></h2>
+        <p class="section-subtitle">Punya pertanyaan lain? Hubungi tim kami langsung via WhatsApp untuk respon cepat.</p>
+      </div>
+      
+      <!-- Right side: Accordion List -->
+      <div class="faq-accordion-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <details class="faq-details">
+              <summary class="faq-summary">
+                <span class="faq-question">{faq.q}</span>
+                <span class="faq-icon-wrapper">
+                  <i class="ph ph-plus faq-icon-plus" aria-hidden="true"></i>
+                  <i class="ph ph-minus faq-icon-minus" aria-hidden="true"></i>
+                </span>
+              </summary>
+              <div class="faq-content">
+                <p>{faq.a}</p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: flex-start;
+  }
+  
+  .faq-header {
+    position: sticky;
+    top: 120px;
+  }
+  
+  .section-subtitle {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+  }
+  
+  /* Accordion styling (minimalist UI: strip boxes, separate with border-bottom) */
+  .faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .faq-details {
+    width: 100%;
+  }
+  
+  .faq-summary {
+    list-style: none; /* Hide default arrow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    user-select: none;
+    transition: var(--transition-fast);
+  }
+  
+  .faq-summary::-webkit-details-marker {
+    display: none; /* Hide default arrow Chrome/Safari */
+  }
+  
+  .faq-summary:hover {
+    color: var(--accent-gold);
+  }
+  
+  .faq-question {
+    padding-right: 2rem;
+  }
+  
+  .faq-icon-wrapper {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  
+  .faq-icon-plus, .faq-icon-minus {
+    position: absolute;
+    transition: var(--transition-fast);
+  }
+  
+  .faq-icon-minus {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  
+  /* Details Open States */
+  .faq-details[open] .faq-icon-plus {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  
+  .faq-details[open] .faq-icon-minus {
+    opacity: 1;
+    transform: rotate(0deg);
+    color: var(--accent-gold);
+  }
+  
+  .faq-details[open] .faq-summary {
+    color: var(--accent-gold);
+  }
+  
+  /* Smooth open animation */
+  .faq-content {
+    padding-bottom: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 991px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .faq-header {
+      position: static;
+    }
+    
+    .faq-summary {
+      padding: 1.5rem 0;
+      font-size: 1rem;
+    }
+  }
+</style>

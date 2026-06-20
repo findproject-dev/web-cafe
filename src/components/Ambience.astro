@@ -1,0 +1,293 @@
+---
+/* Ambience & Gallery Component */
+import { Image } from 'astro:assets';
+import wfcImage from '../assets/wfc.jpg';
+import outdoorImage from '../assets/outdoor.jpg';
+import dessertImage from '../assets/dessert.jpg';
+import signatureImage from '../assets/signature.jpg';
+---
+<section id="ambience" class="ambience-section section-spacing">
+  <div class="container">
+    
+    <!-- Top Row: Narrative and Use cases -->
+    <div class="ambience-intro">
+      <div class="intro-left">
+        <span class="mono-eyebrow">THE EXPERIENCE</span>
+        <h2 class="section-title">Every corner of FindFein is <br class="desktop-only" />designed for <span class="accent">your moment</span>.</h2>
+      </div>
+      <div class="intro-right">
+        <p class="intro-paragraph">
+          We built FindFein as a cozy sanctuary. Exposed brick walls, cold steel beams, warm industrial lighting, and soft acoustic music merge to form the perfect "third place" outside of home and work.
+        </p>
+        
+        <!-- Use cases listed as clean typography list with minor markers -->
+        <div class="use-cases-grid">
+          <div class="use-case-item">
+            <i class="ph ph-laptop"></i>
+            <span>Work From Cafe (WFC)</span>
+          </div>
+          <div class="use-case-item">
+            <i class="ph ph-chats-teardrop"></i>
+            <span>Nongkrong Santai</span>
+          </div>
+          <div class="use-case-item">
+            <i class="ph ph-briefcase"></i>
+            <span>Meeting Ringan</span>
+          </div>
+          <div class="use-case-item">
+            <i class="ph ph-heart"></i>
+            <span>Cozy Date Spot</span>
+          </div>
+          <div class="use-case-item">
+            <i class="ph ph-users-three"></i>
+            <span>Community Space</span>
+          </div>
+          <div class="use-case-item">
+            <i class="ph ph-coffee"></i>
+            <span>Everyday Rituals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom Row: Masonry Gallery (Double Bezel nested image slots) -->
+    <div class="gallery-grid">
+      
+      <!-- 1. Indoor Dominant (Vertical large card) -->
+      <div class="gallery-item item-large double-bezel-outer">
+        <div class="gallery-inner double-bezel-inner">
+          <Image src={wfcImage} alt="Indoor Cafe Workspace Cozy WFC" class="gallery-img" width={800} loading="lazy" decoding="async" />
+          <div class="gallery-img-overlay"></div>
+          <div class="gallery-label">
+            <span class="label-title">Indoor Area</span>
+            <span class="label-desc">Engineered for focus and quiet WFC sessions.</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 2. Outdoor (Landscape/horizontal card) -->
+      <div class="gallery-item item-medium double-bezel-outer">
+        <div class="gallery-inner double-bezel-inner">
+          <Image src={outdoorImage} alt="Outdoor Seating Area Semarang" class="gallery-img" width={800} loading="lazy" decoding="async" />
+          <div class="gallery-img-overlay"></div>
+          <div class="gallery-label">
+            <span class="label-title">Outdoor Space</span>
+            <span class="label-desc">Warm festoon lights and cool breezes at dusk.</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3. Dessert Shot (Square card) -->
+      <div class="gallery-item item-square-1 double-bezel-outer">
+        <div class="gallery-inner double-bezel-inner">
+          <Image src={dessertImage} alt="Premium Matcha Tiramisu" class="gallery-img" width={600} loading="lazy" decoding="async" />
+          <div class="gallery-img-overlay"></div>
+          <div class="gallery-label">
+            <span class="label-title">Aesthetic Tastes</span>
+            <span class="label-desc">Curated Premium Desserts.</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 4. Signature Drink (Square card) -->
+      <div class="gallery-item item-square-2 double-bezel-outer">
+        <div class="gallery-inner double-bezel-inner">
+          <Image src={signatureImage} alt="Signature Coffee Butterscotch Sea Salt" class="gallery-img" width={600} loading="lazy" decoding="async" />
+          <div class="gallery-img-overlay"></div>
+          <div class="gallery-label">
+            <span class="label-title">Signature Brews</span>
+            <span class="label-desc">Crafted coffee creations.</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .ambience-section {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .ambience-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: flex-start;
+  }
+  
+  .intro-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+  }
+  
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .use-case-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .use-case-item i {
+    color: var(--accent-gold);
+    font-size: 1.25rem;
+  }
+  
+  /* Masonry Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 300px 300px;
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    background-color: var(--border-color);
+    padding: 6px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .gallery-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-surface);
+    border-radius: calc(var(--radius-lg) - 4px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-2px);
+    background-color: var(--accent-gold);
+    box-shadow: 0 15px 35px rgba(197, 165, 127, 0.15);
+  }
+  
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+  }
+  
+  /* Positions inside the grid */
+  .item-large {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+  
+  .item-medium {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+  }
+  
+  .item-square-1 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+  
+  .item-square-2 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+  }
+  
+  /* Text details on hover */
+  .gallery-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(12, 10, 9, 0.9) 0%, rgba(12, 10, 9, 0.2) 50%, transparent 100%);
+    opacity: 0.4;
+    transition: var(--transition-fast);
+    pointer-events: none;
+  }
+  
+  .gallery-item:hover .gallery-img-overlay {
+    opacity: 0.9;
+  }
+  
+  .gallery-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    z-index: 2;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+  }
+  
+  .gallery-item:hover .gallery-label {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .label-title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .label-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    line-height: 1.3;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 991px) {
+    .ambience-intro {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 1.5rem;
+    }
+    
+    .item-large, .item-medium, .item-square-1, .item-square-2 {
+      grid-column: span 1;
+      grid-row: span 1;
+      height: 250px;
+    }
+    
+    .gallery-label {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .gallery-img-overlay {
+      opacity: 0.7;
+    }
+  }
+</style>
