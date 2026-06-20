@@ -53,7 +53,8 @@ import heroImage from '../assets/hero.jpg';
 
 <style>
   .hero-section {
-    height: 100dvh;
+    height: 100vh; /* Fallback */
+    height: 100svh; /* Prevent resize jump on mobile scroll */
     min-height: 600px; /* Safe viewport height */
     display: flex;
     align-items: center;
